@@ -1,8 +1,6 @@
-package com.example.fastlms.member;
+package com.example.fastlms.member.model;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 @Data
@@ -13,6 +11,5 @@ public class MemberInput {
     private String userName;
     private String password;
     private String phone;
-
 
 }
