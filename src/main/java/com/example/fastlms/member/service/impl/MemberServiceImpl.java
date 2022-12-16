@@ -1,5 +1,7 @@
 package com.example.fastlms.member.service.impl;
 
+import com.example.fastlms.admin.mapper.MemberMapper;
+import com.example.fastlms.admin.dto.MemberDto;
 import com.example.fastlms.component.MailComponents;
 import com.example.fastlms.member.entity.Member;
 import com.example.fastlms.member.exception.MemberEmailNotAuthException;
@@ -10,7 +12,6 @@ import com.example.fastlms.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,6 +30,7 @@ public class MemberServiceImpl implements MemberService {
 
     private final MemberRepository memberRepository;
     private final MailComponents mailComponents;
+    private final MemberMapper memberMapper;
 
     /**
      * 회원가입시 중복체크
@@ -163,6 +165,18 @@ public class MemberServiceImpl implements MemberService {
 
         return true;
     }
+
+    @Override
+    public List<MemberDto> list() {
+
+        MemberDto parameter = new MemberDto();
+        List<MemberDto> list = memberMapper.selectList(parameter);
+
+        return list;
+
+//        return memberRepository.findAll();
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
