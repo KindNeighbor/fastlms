@@ -2,6 +2,7 @@ package com.example.fastlms.member.service.impl;
 
 import com.example.fastlms.admin.mapper.MemberMapper;
 import com.example.fastlms.admin.dto.MemberDto;
+import com.example.fastlms.admin.model.MemberParam;
 import com.example.fastlms.component.MailComponents;
 import com.example.fastlms.member.entity.Member;
 import com.example.fastlms.member.exception.MemberEmailNotAuthException;
@@ -167,9 +168,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public List<MemberDto> list() {
+    public List<MemberDto> list(MemberParam parameter) {
 
-        MemberDto parameter = new MemberDto();
         List<MemberDto> list = memberMapper.selectList(parameter);
 
         return list;

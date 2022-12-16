@@ -1,6 +1,7 @@
 package com.example.fastlms.member.service;
 
 import com.example.fastlms.admin.dto.MemberDto;
+import com.example.fastlms.admin.model.MemberParam;
 import com.example.fastlms.member.model.MemberInput;
 import com.example.fastlms.member.model.ResetPasswordInput;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,5 +25,5 @@ public interface MemberService extends UserDetailsService {
     boolean checkResetPassword(String uuid);
 
     // 회원 목록 리턴(관리자에서만 사용 가능)
-    List<MemberDto> list();
+    List<MemberDto> list(MemberParam parameter);
 }
