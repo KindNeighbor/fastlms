@@ -1,28 +1,56 @@
 package com.example.fastlms.admin.dto;
 
+import com.example.fastlms.member.entity.Member;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
+@Builder
 public class MemberDto {
 
-    private String userId;
+    String userId;
+    String userName;
+    String phone;
+    String password;
+    LocalDateTime regDt;
 
-    private String userName;
-    private String phone;
-    private String password;
-    private LocalDateTime regDt;
+    boolean emailAuthYn;
+    LocalDateTime emailAuthDt;
+    String emailAuthKey;
 
-    private boolean emailAuthYn;
-    private LocalDateTime emailAuthDt;
-    private String emailAuthKey;
+    String resetPasswordKey;
+    LocalDateTime resetPasswordLimitDt;
 
-    private String resetPasswordKey;
-    private LocalDateTime resetPasswordLimitDt;
-
-    private boolean adminYn;
+    boolean adminYn;
+    String userStatus;
 
     long totalCount;
     long seq;
+
+    public static MemberDto of(Member member) {
+
+        return MemberDto.builder()
+                .userId(member.getUserId())
+                .userName(member.getUserName())
+                .phone(member.getPhone())
+
+                .regDt(member.getRegDt())
+                .emailAuthYn(member.isEmailAuthYn())
+                .emailAuthDt(member.getEmailAuthDt())
+                .emailAuthKey(member.getEmailAuthKey())
+
+                .resetPasswordKey(member.getResetPasswordKey())
+                .resetPasswordLimitDt(member.getResetPasswordLimitDt())
+
+                .adminYn(member.isAdminYn())
+                .userStatus(member.getUserStatus())
+
+                .build();
+    }
 }
