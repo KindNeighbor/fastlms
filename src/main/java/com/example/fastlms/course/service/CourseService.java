@@ -23,6 +23,8 @@ public interface CourseService {
     List<CourseDto> list(CourseParam parameter);
 
     // 강좌 상세정보
-
     CourseDto getById(long id);
+
+    // 프론트 강좌 목록
+    List<CourseDto> frontList(CourseParam parameter);
 }
