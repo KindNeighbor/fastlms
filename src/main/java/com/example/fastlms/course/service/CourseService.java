@@ -3,6 +3,8 @@ package com.example.fastlms.course.service;
 import com.example.fastlms.course.dto.CourseDto;
 import com.example.fastlms.course.model.CourseInput;
 import com.example.fastlms.course.model.CourseParam;
+import com.example.fastlms.course.model.ServiceResult;
+import com.example.fastlms.course.model.TakeCourseInput;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -30,4 +32,7 @@ public interface CourseService {
 
     // 프론트 강좌 상세 목록
     CourseDto frontDetail(long id);
+
+    // 수강신청
+    ServiceResult req(TakeCourseInput parameter);
 }
