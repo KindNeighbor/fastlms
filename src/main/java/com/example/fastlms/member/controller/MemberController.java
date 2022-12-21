@@ -8,6 +8,7 @@ import com.example.fastlms.course.service.TakeCourseService;
 import com.example.fastlms.member.model.MemberInput;
 import com.example.fastlms.member.model.ResetPasswordInput;
 import com.example.fastlms.member.service.MemberService;
+import com.example.fastlms.util.PasswordUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
@@ -162,5 +163,28 @@ public class MemberController {
         model.addAttribute("list", list);
 
         return "member/takecourse";
+    }
+
+    @GetMapping("/member/withdraw")
+    public String memberWithdraw(Model model) {
+
+        return "member/withdraw";
+    }
+
+    @PostMapping("/member/withdraw")
+    public String memberWithdrawSubmit(Model model,
+                                       Principal principal,
+                                       MemberInput parameter) {
+
+        String userId = principal.getName();
+        MemberDto detail = memberService.detail(userId);
+
+        ServiceResult result = memberService.withdraw(userId, parameter.getPassword());
+        if (!result.isResult()) {
+            model.addAttribute("message", result.getMessage());
+            return "common/error";
+        }
+
+        return "redirect:/member/logout";
     }
 }
