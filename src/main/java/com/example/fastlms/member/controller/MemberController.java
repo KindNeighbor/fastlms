@@ -1,7 +1,10 @@
 package com.example.fastlms.member.controller;
 
 import com.example.fastlms.admin.dto.MemberDto;
+import com.example.fastlms.course.dto.CourseDto;
+import com.example.fastlms.course.dto.TakeCourseDto;
 import com.example.fastlms.course.model.ServiceResult;
+import com.example.fastlms.course.service.TakeCourseService;
 import com.example.fastlms.member.model.MemberInput;
 import com.example.fastlms.member.model.ResetPasswordInput;
 import com.example.fastlms.member.service.MemberService;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.List;
 
 
 @RequiredArgsConstructor
@@ -20,6 +24,7 @@ import java.security.Principal;
 public class MemberController {
 
     private final MemberService memberService;
+    private final TakeCourseService takeCourseService;
 
     @RequestMapping(value = "/member/login")
     public String login() {
@@ -152,9 +157,9 @@ public class MemberController {
     public String memberTakeCourse(Model model, Principal principal) {
 
         String userId = principal.getName();
-        MemberDto detail = memberService.detail(userId);
+        List<TakeCourseDto> list = takeCourseService.myCourse(userId);
 
-        model.addAttribute("detail", detail);
+        model.addAttribute("list", list);
 
         return "member/takecourse";
     }

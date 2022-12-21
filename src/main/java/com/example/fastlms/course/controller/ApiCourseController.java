@@ -1,6 +1,5 @@
 package com.example.fastlms.course.controller;
 
-import com.example.fastlms.admin.service.CategoryService;
 import com.example.fastlms.common.model.ResponseResult;
 import com.example.fastlms.course.model.ServiceResult;
 import com.example.fastlms.course.model.TakeCourseInput;
