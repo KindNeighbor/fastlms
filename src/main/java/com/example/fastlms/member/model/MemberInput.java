@@ -12,4 +12,9 @@ public class MemberInput {
     private String password;
     private String phone;
 
+    private String newPassword;
+
+    private String zipcode;
+    private String addr;
+    private String addrDetail;
 }

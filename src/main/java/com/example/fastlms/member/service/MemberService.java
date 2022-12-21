@@ -2,6 +2,7 @@ package com.example.fastlms.member.service;
 
 import com.example.fastlms.admin.dto.MemberDto;
 import com.example.fastlms.admin.model.MemberParam;
+import com.example.fastlms.course.model.ServiceResult;
 import com.example.fastlms.member.model.MemberInput;
 import com.example.fastlms.member.model.ResetPasswordInput;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -35,4 +36,10 @@ public interface MemberService extends UserDetailsService {
 
     // 회원 비밀번호 초기화
     boolean updatePassword(String userId, String password);
+
+    // 회원 정보 페이지내 비밀번호 변경
+    ServiceResult updateMemberPassword(MemberInput parameter);
+
+    // 회원 정보 수정
+    ServiceResult updateMember(MemberInput parameter);
 }
