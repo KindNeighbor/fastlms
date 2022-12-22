@@ -7,6 +7,7 @@ import com.example.fastlms.member.model.MemberInput;
 import com.example.fastlms.member.model.ResetPasswordInput;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface MemberService extends UserDetailsService {
@@ -45,4 +46,7 @@ public interface MemberService extends UserDetailsService {
 
     // 회원을 탈퇴시켜주는 로직
     ServiceResult withdraw(String userId, String password);
+
+    // 로그인 정보
+    boolean log(String userId, LocalDateTime LoginDt, String userAgent, String clientIp);
 }

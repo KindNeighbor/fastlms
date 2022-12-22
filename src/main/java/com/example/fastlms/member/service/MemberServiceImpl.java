@@ -1,5 +1,7 @@
-package com.example.fastlms.member.service.impl;
+package com.example.fastlms.member.service;
 
+import com.example.fastlms.admin.log.entity.LoginHistory;
+import com.example.fastlms.admin.log.repository.LoginHistoryRepository;
 import com.example.fastlms.admin.mapper.MemberMapper;
 import com.example.fastlms.admin.dto.MemberDto;
 import com.example.fastlms.admin.model.MemberParam;
@@ -37,6 +39,7 @@ public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
     private final MailComponents mailComponents;
     private final MemberMapper memberMapper;
+    private final LoginHistoryRepository loginHistoryRepository;
 
     /**
      * 회원가입시 중복체크
@@ -94,6 +97,30 @@ public class MemberServiceImpl implements MemberService {
         member.setUserStatus(MemberCode.MEMBER_STATUS_ING);
         member.setEmailAuthYn(true);
         member.setEmailAuthDt(LocalDateTime.now());
+        memberRepository.save(member);
+
+        return true;
+    }
+
+    @Override
+    public boolean log(String userId, LocalDateTime loginDt, String userAgent, String clientIp) {
+
+        LoginHistory loginHistory = new LoginHistory();
+        Optional<Member> optionalMember = memberRepository.findById(userId);
+
+        loginHistory.setUserId(userId);
+        loginHistory.setLoginDt(loginDt);
+        loginHistory.setUserAgent(userAgent);
+        loginHistory.setClientIp(clientIp);
+        loginHistoryRepository.save(loginHistory);
+
+        if(!optionalMember.isPresent()){
+            throw new UsernameNotFoundException("Not Found");
+        }
+
+        Member member = optionalMember.get();
+
+        member.setLoginDt(loginDt);
         memberRepository.save(member);
 
         return true;

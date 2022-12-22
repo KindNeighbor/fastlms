@@ -32,6 +32,8 @@ public class MemberDto {
     boolean adminYn;
     String userStatus;
 
+    LocalDateTime loginDt;
+
     private String zipcode;
     private String addr;
     private String addrDetail;
@@ -57,6 +59,7 @@ public class MemberDto {
 
                 .adminYn(member.isAdminYn())
                 .userStatus(member.getUserStatus())
+                .loginDt(member.getLoginDt())
 
                 .zipcode(member.getZipcode())
                 .addr(member.getAddr())

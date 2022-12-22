@@ -1,7 +1,9 @@
 package com.example.fastlms.main.controller;
 
+import com.example.fastlms.admin.log.RequestUtils;
 import com.example.fastlms.component.MailComponents;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,18 +14,19 @@ import java.io.PrintWriter;
 
 @RequiredArgsConstructor
 @Controller
+@Slf4j
 public class MainController {
 
     private final MailComponents mailComponents;
 
     @RequestMapping("/")
-    public String index() {
+    public String index(HttpServletRequest request) {
 
-//        String email = "zerosix1017@gmail.com";
-//        String subject = "안녕하세요. 제로베이스 입니다.";
-//        String text = "<p>안녕하세요.</p><p>반갑습니다.</p>";
-//
-//        mailComponents.sendMail(email, subject, text);
+        String userAgent = RequestUtils.getUserAgent(request);
+        String clientIp = RequestUtils.getClientIp(request);
+
+        log.info(userAgent);
+        log.info(clientIp);
 
         return "index";
     }
