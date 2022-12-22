@@ -11,6 +11,7 @@ import java.util.List;
 public interface CategoryService {
 
     List<CategoryDto> list();
+
     // 카테고리 신규 추가
     boolean add(String categoryName);
 

@@ -1,6 +1,6 @@
 package com.example.fastlms.main.controller;
 
-import com.example.fastlms.admin.log.RequestUtils;
+import com.example.fastlms.log.RequestUtils;
 import com.example.fastlms.component.MailComponents;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -8,9 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 
 @RequiredArgsConstructor
 @Controller

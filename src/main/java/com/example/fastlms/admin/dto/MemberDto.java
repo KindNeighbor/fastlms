@@ -77,4 +77,9 @@ public class MemberDto {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss");
         return udtDt != null ? udtDt.format(formatter) : "";
     }
+
+    public String getLoginDtText() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm");
+        return loginDt != null ? loginDt.format(formatter) : "";
+    }
 }

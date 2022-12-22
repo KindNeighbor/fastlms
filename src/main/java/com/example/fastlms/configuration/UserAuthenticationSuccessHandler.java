@@ -1,6 +1,6 @@
 package com.example.fastlms.configuration;
 
-import com.example.fastlms.admin.log.RequestUtils;
+import com.example.fastlms.log.RequestUtils;
 import com.example.fastlms.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

@@ -1,4 +1,4 @@
-package com.example.fastlms.admin.log;
+package com.example.fastlms.log;
 
 import javax.servlet.http.HttpServletRequest;
 

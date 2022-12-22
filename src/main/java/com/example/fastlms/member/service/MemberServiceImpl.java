@@ -1,7 +1,7 @@
 package com.example.fastlms.member.service;
 
-import com.example.fastlms.admin.log.entity.LoginHistory;
-import com.example.fastlms.admin.log.repository.LoginHistoryRepository;
+import com.example.fastlms.member.entity.LoginHistory;
+import com.example.fastlms.member.repository.LoginHistoryRepository;
 import com.example.fastlms.admin.mapper.MemberMapper;
 import com.example.fastlms.admin.dto.MemberDto;
 import com.example.fastlms.admin.model.MemberParam;
@@ -14,7 +14,6 @@ import com.example.fastlms.member.exception.MemberStopUserException;
 import com.example.fastlms.member.model.MemberInput;
 import com.example.fastlms.member.model.ResetPasswordInput;
 import com.example.fastlms.member.repository.MemberRepository;
-import com.example.fastlms.member.service.MemberService;
 import com.example.fastlms.util.PasswordUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
