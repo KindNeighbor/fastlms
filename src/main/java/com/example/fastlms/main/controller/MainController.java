@@ -1,13 +1,17 @@
 package com.example.fastlms.main.controller;
 
+import com.example.fastlms.admin.dto.BannerDto;
+import com.example.fastlms.admin.service.BannerService;
 import com.example.fastlms.log.RequestUtils;
 import com.example.fastlms.component.MailComponents;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
@@ -15,15 +19,19 @@ import javax.servlet.http.HttpServletRequest;
 public class MainController {
 
     private final MailComponents mailComponents;
+    private final BannerService bannerService;
 
     @RequestMapping("/")
-    public String index(HttpServletRequest request) {
+    public String index(Model model, HttpServletRequest request) {
 
         String userAgent = RequestUtils.getUserAgent(request);
         String clientIp = RequestUtils.getClientIp(request);
 
         log.info(userAgent);
         log.info(clientIp);
+
+        List<BannerDto> bannerDtoList = bannerService.frontList();
+        model.addAttribute("list",bannerDtoList);
 
         return "index";
     }

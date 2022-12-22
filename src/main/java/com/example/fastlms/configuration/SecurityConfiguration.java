@@ -2,6 +2,7 @@ package com.example.fastlms.configuration;
 
 import com.example.fastlms.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -38,6 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/favicon.ico", "/files/**");
+        web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
         super.configure(web);
     }
 
@@ -45,6 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable();
+        http.headers().frameOptions().sameOrigin();
 
         http.authorizeRequests()
                 .antMatchers(

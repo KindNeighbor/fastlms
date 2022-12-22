@@ -3,13 +3,37 @@
     <head>
         <meta charset="UTF-8">
         <title>메인 페이지</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
     </head>
     <body>
         <h1> 메인 페이지</h1>
         <div th:replace="/fragment/layout.html :: fragment-body-menu"></div>
 
-        <div>
-            <img src="/files/2022/12/22/95f696761521445e97717a5d66392ed0.jfif"/>
+        <div class="home__slider">
+            <div class="slider">
+                <div th:each="x : ${list}">
+                    <a th:href="${x.linkUrl}" th:target="${x.target}">
+                        <img th:src="${x.urlFilename}">
+                    </a>
+                </div>
+            </div>
         </div>
+
+        <script>
+            $(function(){
+                $('.slider').bxSlider({
+                    auto: true,
+                    speed: 500,
+                    pause: 4000,
+                    mode: 'horizontal',
+                    pager: true,
+                    touchEnabled: false,
+                    sliderWidth:800
+                });
+            });
+        </script>
+
     </body>
 </html>

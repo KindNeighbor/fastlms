@@ -37,6 +37,6 @@ build/
 /mvnw
 /mvnw.cmd
 
-static/
+res/
 files/
 
