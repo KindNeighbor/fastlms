@@ -1,6 +1,7 @@
 # Learning Management System project
+- 학습 관리 서비스
 
-## 기술 스텍
+## stack
 - Spring boot, Spring Security
 - MariaDB
 - MyBatis
