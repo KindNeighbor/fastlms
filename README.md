@@ -1,14 +1,13 @@
 # Learning Management System project
 
-# 기술 스텍
+## 기술 스텍
 - Spring boot, Spring Security
 - MariaDB
-- JPA
 - MyBatis
 - Java Mail Sender
 - thymeleaf
 
-# 구현된 기능
+## 구현된 기능
 - 회원가입 및 가입 인증메일 전송
 - 로그인 및 로그아웃
 - 비밀번호 찾기(비밀번호 초기화 기능)
